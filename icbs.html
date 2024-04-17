@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NHS Integrated Care Boards (ICBs)</title>
+    <style>
+        a { color: blue; }
+        .icb-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 10px;
+            padding: 10px;
+        }
+        
+        .icb-link {
+            text-decoration: none;
+            color: black;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            border-radius: 5px;
+            transition: background-color 0.2s ease;
+            background-color: #B0EAB0;
+        }
+
+        .icb-nolink {
+          background-color: #FAA0A0;
+        }
+        
+        .icb-yeslink:hover {
+            background-color: #A0FAA0;
+        }
+    </style>
+</head>
+<body>
+    <h1>NHS Integrated Care Boards (ICBs)</h1>
+    <p>Open and accountable ICBs complying with <a href="https://www.gov.uk/government/publications/the-7-principles-of-public-life/the-7-principles-of-public-life--2">the Nolan Principles</a> should make available recordings of their board meetings for public consumption. The ICBs are listed below with links (in green) to where they post recordings of their board meetings where available:</p>
+    <div class="icb-container">
+    </div>
+    
+    <script>
+        const icbs = [
+          { "name": "NHS Bedfordshire, Luton and Milton Keynes ICB" },
+          { "name": "NHS Cambridgeshire and Peterborough ICB" },
+          { "name": "NHS Hertfordshire and West Essex ICB" },
+          { "name": "NHS Mid and South Essex ICB" },
+          { "name": "NHS Norfolk and Waveney ICB", "href": "https://www.youtube.com/@nandwics" },
+          { "name": "NHS Suffolk and North East Essex ICB", "href": "https://www.youtube.com/@sneeicb" },
+
+          { "name": "NHS North Central London ICB" },
+          { "name": "NHS North East London ICB" },
+          { "name": "NHS North West London ICB", "href": "https://www.youtube.com/@healthiernwl7776" },
+          { "name": "NHS South East London ICB", "href": "https://www.youtube.com/@SouthEastLondonICS" },
+          { "name": "NHS South West London ICB", "href": "https://www.youtube.com/@nhssouthwestlondon" },
+
+          { "name": "NHS Birmingham and Solihull ICB" },
+          { "name": "NHS Black Country ICB" },
+          { "name": "NHS Coventry and Warwickshire ICB" },
+          { "name": "NHS Derby and Derbyshire ICB", "href": "https://www.youtube.com/@NHSDerbyandDerbyshireICB" },
+          { "name": "NHS Herefordshire and Worcestershire ICB", "href": "https://www.youtube.com/@herefordshireandworcesters4352" },
+          { "name": "NHS Leicester, Leicestershire and Rutland ICB" },
+          { "name": "NHS Lincolnshire ICB", "href": "https://www.youtube.com/@NHSLincolnshireICB" },
+          { "name": "NHS Northamptonshire ICB", "href": "https://www.youtube.com/@ICNorthamptonshire" },
+          { "name": "NHS Nottingham and Nottinghamshire ICB" },
+          { "name": "NHS Shropshire, Telford and Wrekin ICB", "href": "https://www.youtube.com/@LightsourceTV/streams" },
+          { "name": "NHS Staffordshire and Stoke-on-Trent ICB", "href": "https://www.youtube.com/@staffordshireandstoke-on-t7697" },
+
+          { "name": "NHS Humber and North Yorkshire ICB", "href": "https://www.youtube.com/@HNYPartnership" },
+          { "name": "NHS North East and North Cumbria ICB", "href": "https://www.youtube.com/@northeastandnorthcumbrianh1204" },
+          { "name": "NHS South Yorkshire ICB", "href": "https://www.youtube.com/@nhssouthyorkshireintegrate1195" },
+          { "name": "NHS West Yorkshire ICB", "href": "https://www.youtube.com/@wypartnership" },
+
+          { "name": "NHS Cheshire and Merseyside ICB", "href": "https://www.youtube.com/@NHSCandM" },
+          { "name": "NHS Greater Manchester ICB" },
+          { "name": "NHS Lancashire and South Cumbria ICB", "href": "https://www.youtube.com/@LSCICB" },
+
+          { "name": "NHS Buckinghamshire, Oxfordshire and Berkshire West ICB", "href": "https://www.youtube.com/@nhsbucksoxonandberkswestic7821" },
+          { "name": "NHS Frimley ICB", "href": "https://www.youtube.com/@frimleyhealthandcareintegr8654" },
+          { "name": "NHS Hampshire and Isle of Wight ICB" },
+          { "name": "NHS Kent and Medway ICB" },
+          { "name": "NHS Surrey Heartlands ICB" },
+          { "name": "NHS Sussex ICB" },
+
+          { "name": "NHS Bath and North East Somerset, Swindon and Wiltshire ICB" },
+          { "name": "NHS Bristol, North Somerset and South Gloucestershire ICB", "href": "https://www.youtube.com/@BNSSG_ICB" },
+          { "name": "NHS Cornwall and The Isles Of Scilly ICB", "href": "https://www.youtube.com/@CIOSICB" },
+          { "name": "NHS Devon ICB", "href": "https://www.youtube.com/@NHSDevonICB" },
+          { "name": "NHS Dorset ICB", "href": "https://www.youtube.com/@NHSDorset" },
+          { "name": "NHS Gloucestershire ICB" },
+          { "name": "NHS Somerset ICB" }
+        ];
+
+        for (let i = 0; i<icbs.length; i++) {
+          const icbContainer = document.querySelector('.icb-container');
+
+          const newLink = document.createElement('a');
+          newLink.classList.add('icb-link');
+          if (icbs[i].href) {
+            newLink.href = icbs[i].href;
+            newLink.classList.add('icb-yeslink');
+          } else {
+            newLink.classList.add('icb-nolink');
+          }
+
+          const linkSpan = document.createElement('span');
+          linkSpan.textContent = icbs[i].name;
+
+          newLink.appendChild(linkSpan);
+          icbContainer.appendChild(newLink);
+        }
+    </script>
+</body>
+</html>
+
